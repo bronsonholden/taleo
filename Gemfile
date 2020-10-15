@@ -5,3 +5,7 @@ gemspec
 
 gem 'rake', '>= 12.3.3'
 gem 'rspec', '~> 3.0'
+
+group :development, :test do
+  gem "simplecov", "~> 0.17.1"
+end
