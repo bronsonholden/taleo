@@ -1,5 +1,7 @@
 # Taleo
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/18630172a2dc24e7ace1/maintainability)](https://codeclimate.com/github/paulholden2/taleo/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/18630172a2dc24e7ace1/test_coverage)](https://codeclimate.com/github/paulholden2/taleo/test_coverage)
+
 A library for using the Taleo REST API.
 
 ## Installation
