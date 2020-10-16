@@ -186,10 +186,24 @@ class MockTaleo < Sinatra::Base
           end
         end
 
-        get '/attachment' do
-          json_response 200, {
-            'attachments' => Array.new(5) { |i| mock_attachment('candidate', i) }
+        namespace '/attachment' do
+          get {
+            json_response 200, {
+              'attachments' => Array.new(5) { |i| mock_attachment('candidate', i) }
+            }
           }
+
+          namespace '/:aid' do
+            get {
+              json_response 200, mock_attachment('candidate', params[:aid])
+            }
+
+            get '/download' do
+              stream do |out|
+                out << 'Mock attachment contents'
+              end
+            end
+          end
         end
       end
     end
