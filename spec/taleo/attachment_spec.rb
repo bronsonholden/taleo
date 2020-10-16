@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Taleo::Attachment do
   let(:candidate_id) { 1 }
   let(:candidate) { client.candidate(candidate_id) }

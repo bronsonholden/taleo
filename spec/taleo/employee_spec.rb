@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Taleo::Employee do
   let(:employee_id) { 1 }
   let(:employee) { client.employee(employee_id) }

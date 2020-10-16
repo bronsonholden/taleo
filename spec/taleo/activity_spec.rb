@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Taleo::Activity do
   let(:activity_id) { 1 }
   let(:activity) { client.activity(activity_id) }

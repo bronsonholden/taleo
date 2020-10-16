@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Taleo::Packet do
   let(:packet_id) { 1 }
   let(:packet) { client.packet(packet_id) }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'taleo/cursor'
 require 'taleo/activity'
 require 'taleo/packet'

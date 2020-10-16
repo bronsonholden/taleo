@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Taleo
   class Resource
     attr_reader :data, :client

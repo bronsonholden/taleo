@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Taleo do
   describe 'client' do
     describe 'service locator' do

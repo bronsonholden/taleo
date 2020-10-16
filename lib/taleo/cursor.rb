@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Taleo
   # Pages through results of a search query
   class Cursor
