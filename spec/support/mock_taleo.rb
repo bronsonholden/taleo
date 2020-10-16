@@ -31,7 +31,6 @@ class MockTaleo < Sinatra::Base
   end
 
   post '/login' do
-    puts 'asdf'
     json_response 200, {
       'authToken' => 'webapi-12345'
     }
