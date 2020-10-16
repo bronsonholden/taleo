@@ -13,7 +13,7 @@ module Taleo
 
     def items
       results.map do |i|
-        klass.new(i.fetch(resource))
+        klass.new(i.fetch(resource), client)
       end
     end
 
