@@ -6,7 +6,7 @@ module Taleo
       data.fetch('id')
     end
 
-    def attachment_type
+    def type
       data.fetch('attachmentType')
     end
 
