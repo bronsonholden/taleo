@@ -28,7 +28,9 @@ jobs:
         ruby-version: 2.6
 
     - name: Install dependencies
-      run: bundle install
+      run: |
+        gem install bundler -v 2.1.4
+        bundle install
 
     - name: Test
       run: bundle exec rake
@@ -52,7 +54,9 @@ jobs:
       run: bundle add code-scanning-rubocop --version 0.3.0 --skip-install
 
     - name: Install dependencies
-      run: bundle install
+      run: |
+        gem install bundler -v 2.1.4
+        bundle install
 
     - name: Rubocop run
       run: |
