@@ -98,6 +98,18 @@ module Taleo
       end
     end
 
+    def download(url)
+      io = StringIO.new
+      connection.get do |req|
+        req.url url
+        req.options.on_data = Proc.new do |chunk, total_bytes|
+          io << chunk
+        end
+      end
+      io.rewind
+      io
+    end
+
     def api_url!
       conn = Faraday.new(url: "#{service_url}/#{org_code}") do |c|
         c.use Faraday::Response::RaiseError
