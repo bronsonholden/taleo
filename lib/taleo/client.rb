@@ -102,7 +102,7 @@ module Taleo
       io = StringIO.new
       connection.get do |req|
         req.url url
-        req.options.on_data = Proc.new do |chunk, total_bytes|
+        req.options.on_data = Proc.new do |chunk|
           io << chunk
         end
       end
