@@ -44,6 +44,20 @@ class MockTaleo < Sinatra::Base
     }
   end
 
+  def mock_candidate
+    {
+      'candidate' => {
+        'employee' => 1,
+        'candId' => 1,
+        'firstName' => 'John',
+        'lastName' => 'Doe',
+        'relationshipUrls' => {
+          'employee' => "#{url}/object/candidate/#{params[:id]}/employee"
+        }
+      }
+    }
+  end
+
   post '/login' do
     json_response 200, {
       'authToken' => 'webapi-12345'
@@ -62,14 +76,7 @@ class MockTaleo < Sinatra::Base
         }
 
         get '/candidate' do
-          json_response 200, {
-            'candidate' => {
-              'employee' => 1,
-              'candId' => 1,
-              'firstName' => 'John',
-              'lastName' => 'Doe'
-            }
-          }
+          json_response 200, mock_candidate
         end
       end
     end
