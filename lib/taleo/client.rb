@@ -65,8 +65,8 @@ module Taleo
         password: password
       }
 
-      conn = Faraday.new(url: api_url) do |conn|
-        conn.use Faraday::Response::RaiseError
+      conn = Faraday.new(url: api_url) do |c|
+        c.use Faraday::Response::RaiseError
       end
 
       res = conn.post do |req|
