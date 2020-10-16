@@ -1,8 +1,11 @@
 require 'json'
 require 'sinatra/base'
+require 'sinatra/namespace'
 
 # Mock Taleo API server
 class MockTaleo < Sinatra::Base
+  register Sinatra::Namespace
+
   attr_reader :url
 
   def initialize
@@ -38,17 +41,21 @@ class MockTaleo < Sinatra::Base
     json_response 200, {}
   end
 
-  get '/object/employee/:id' do
-    json_response 200, {
-      'employee' => {
-        'candidate' => 1,
-        'employeeId' => params[:id].to_i,
-        'ssn' => 123456789,
-        'relationshipUrls' => {
-          'candidate' => "#{url}/object/employee/#{params[:id]}/candidate",
-          'packets' => "#{url}/object/employee/#{params[:id]}/packets"
+  namespace '/object' do
+    namespace '/employee' do
+      get '/:id' do
+        json_response 200, {
+          'employee' => {
+            'candidate' => 1,
+            'employeeId' => params[:id].to_i,
+            'ssn' => 123456789,
+            'relationshipUrls' => {
+              'candidate' => "#{url}/object/employee/#{params[:id]}/candidate",
+              'packets' => "#{url}/object/employee/#{params[:id]}/packets"
+            }
+          }
         }
-      }
-    }
+      end
+    end
   end
 end
