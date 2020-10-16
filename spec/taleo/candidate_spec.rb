@@ -21,5 +21,10 @@ RSpec.describe Taleo::Candidate do
       expect(candidate.has_resume?).to be_truthy
       expect(candidate.resume).to be_a(StringIO)
     end
+
+    it 'has attachments' do
+      expect(candidate.has_attachments?).to be_truthy
+      expect(candidate.attachments).to all(be_a(Taleo::Attachment))
+    end
   end
 end

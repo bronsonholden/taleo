@@ -1,4 +1,5 @@
 require 'taleo/resource'
+require 'taleo/attachment'
 
 module Taleo
   # Stub Employee class
@@ -26,5 +27,6 @@ module Taleo
     end
 
     has_one :employee, Employee
+    has_many :attachments, Attachment, singular: 'attachment'
   end
 end

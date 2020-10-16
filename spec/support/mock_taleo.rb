@@ -55,7 +55,8 @@ class MockTaleo < Sinatra::Base
         'lastName' => 'Doe',
         'relationshipUrls' => {
           'employee' => "#{url}/object/candidate/#{params[:id]}/employee",
-          'resume' => "#{url}/object/candidate/#{params[:id]}/resume"
+          'resume' => "#{url}/object/candidate/#{params[:id]}/resume",
+          'attachments' => "#{url}/object/candidate/#{params[:id]}/attachment"
         }
       }
     }
@@ -85,6 +86,15 @@ class MockTaleo < Sinatra::Base
           'activityEmployee' => "#{url}/object/activity/#{params[:id]}/activityEmployee",
           'formDownloadUrl' => "#{url}/object/activity/#{params[:id]}/form/download"
         }
+      }
+    }
+  end
+
+  def mock_attachment(entity, id = 1)
+    {
+      'attachment' => {
+        'id' => id,
+        'downloadUrl' => "#{url}/object/#{entity}/#{params[:id]}/attachment/#{id}/download"
       }
     }
   end
@@ -162,6 +172,12 @@ class MockTaleo < Sinatra::Base
           stream do |out|
             out << 'Mock resume contents'
           end
+        end
+
+        get '/attachment' do
+          json_response 200, {
+            'attachments' => Array.new(5) { |i| mock_attachment('candidate', i) }
+          }
         end
       end
     end
