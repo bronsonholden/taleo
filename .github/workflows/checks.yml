@@ -19,21 +19,19 @@ jobs:
     name: Run automated tests
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
+    - name: Checkout repository
       uses: actions/checkout@v2
 
     - name: Set up ruby
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: '2.6'
+        ruby-version: 2.6
 
     - name: Install dependencies
-      run: |
-        bundle install
+      run: bundle install
 
     - name: Test
-      run: |
-        bundle exec rake
+      run: bundle exec rake
 
   rubocop:
     name: Rubocop
