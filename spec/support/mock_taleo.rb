@@ -94,6 +94,8 @@ class MockTaleo < Sinatra::Base
     {
       'attachment' => {
         'id' => id,
+        'contentType' => 'text/plain',
+        'attachmentType' => 'User_Attachment_Type',
         'downloadUrl' => "#{url}/object/#{entity}/#{params[:id]}/attachment/#{id}/download"
       }
     }
