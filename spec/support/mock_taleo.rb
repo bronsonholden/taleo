@@ -54,7 +54,8 @@ class MockTaleo < Sinatra::Base
         'firstName' => 'John',
         'lastName' => 'Doe',
         'relationshipUrls' => {
-          'employee' => "#{url}/object/candidate/#{params[:id]}/employee"
+          'employee' => "#{url}/object/candidate/#{params[:id]}/employee",
+          'resume' => "#{url}/object/candidate/#{params[:id]}/resume"
         }
       }
     }
@@ -155,6 +156,12 @@ class MockTaleo < Sinatra::Base
 
         get '/employee' do
           json_response 200, mock_employee
+        end
+
+        get '/resume' do
+          stream do |out|
+            out << 'Mock resume contents'
+          end
         end
       end
     end

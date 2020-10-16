@@ -16,5 +16,10 @@ RSpec.describe Taleo::Candidate do
     it 'has an employee' do
       expect(candidate.employee).to be_a(Taleo::Employee)
     end
+
+    it 'has a resume' do
+      expect(candidate.has_resume?).to be_truthy
+      expect(candidate.resume).to be_a(StringIO)
+    end
   end
 end
