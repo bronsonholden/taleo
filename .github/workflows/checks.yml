@@ -1,0 +1,40 @@
+name: Checks
+
+on:
+  pull_request:
+    branches: [ master ]
+  push:
+    branches:
+      - '*'
+    paths:
+      - 'lib/**'
+      - 'Gemfile'
+      - 'Gemfile.lock'
+      - 'taleo.gemspec'
+      - 'spec/**'
+      - '.github/workflows/checks.yml'
+
+jobs:
+  test:
+    name: Run automated tests
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Install
+      run: gem install bundler -v 2.1.4
+
+    - name: Test
+      run: |
+        bundle install
+        bundle exec rake
+  quality:
+    name: Run quality checks
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Rubocop checks
+      uses: gimenete/rubocop-action@1.0
