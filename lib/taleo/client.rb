@@ -23,6 +23,10 @@ module Taleo
       Packet.new(show('packet', id), self)
     end
 
+    def candidate(id)
+      Candidate.new(show('candidate', id), self)
+    end
+
     def employees
       cursor('employee', Employee)
     end

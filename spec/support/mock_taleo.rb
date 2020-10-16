@@ -80,5 +80,17 @@ class MockTaleo < Sinatra::Base
         end
       end
     end
+
+    namespace '/candidate' do
+      namespace '/:id' do
+        get {
+          json_response 200, mock_candidate
+        }
+
+        get '/employee' do
+          json_response 200, mock_employee
+        end
+      end
+    end
   end
 end
