@@ -111,6 +111,16 @@ class MockTaleo < Sinatra::Base
 
   namespace '/object' do
     namespace '/employee' do
+      get '/search' do
+        json_response 200, {
+          'pagination' => {
+            'total' => 5,
+            'self' => "#{url}/object/employee/search"
+          },
+          'searchResults' => Array.new(5) { mock_employee }
+        }
+      end
+
       namespace '/:id' do
         get {
           json_response 200, mock_employee
