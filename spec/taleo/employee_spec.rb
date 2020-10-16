@@ -7,4 +7,10 @@ RSpec.describe Taleo::Employee do
       expect(employee.id).to be_a(Integer)
     end
   end
+
+  describe 'relationships' do
+    it 'has a candidate' do
+      expect(employee.candidate).to be_a(Taleo::Candidate)
+    end
+  end
 end

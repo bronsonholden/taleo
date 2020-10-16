@@ -42,18 +42,31 @@ class MockTaleo < Sinatra::Base
 
   namespace '/object' do
     namespace '/employee' do
-      get '/:id' do
-        json_response 200, {
-          'employee' => {
-            'candidate' => 1,
-            'employeeId' => params[:id].to_i,
-            'ssn' => 123456789,
-            'relationshipUrls' => {
-              'candidate' => "#{url}/object/employee/#{params[:id]}/candidate",
-              'packets' => "#{url}/object/employee/#{params[:id]}/packets"
+      namespace '/:id' do
+        get {
+          json_response 200, {
+            'employee' => {
+              'candidate' => 1,
+              'employeeId' => params[:id].to_i,
+              'ssn' => 123456789,
+              'relationshipUrls' => {
+                'candidate' => "#{url}/object/employee/#{params[:id]}/candidate",
+                'packets' => "#{url}/object/employee/#{params[:id]}/packets"
+              }
             }
           }
         }
+
+        get '/candidate' do
+          json_response 200, {
+            'candidate' => {
+              'employee' => 1,
+              'candId' => 1,
+              'firstName' => 'John',
+              'lastName' => 'Doe'
+            }
+          }
+        end
       end
     end
   end
