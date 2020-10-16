@@ -12,5 +12,9 @@ RSpec.describe Taleo::Employee do
     it 'has a candidate' do
       expect(employee.candidate).to be_a(Taleo::Candidate)
     end
+
+    it 'has packets' do
+      expect(employee.packets).to all(be_a(Taleo::Packet))
+    end
   end
 end
