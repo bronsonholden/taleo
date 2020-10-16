@@ -12,6 +12,11 @@ RSpec.describe Taleo::Activity do
     end
   end
 
+  it 'can be downloaded' do
+    expect(activity.can_download?).to be_truthy
+    expect(activity.download).to be_a(StringIO)
+  end
+
   describe 'relationships' do
     it 'has an employee' do
       expect(activity.employee).to be_a(Taleo::Employee)

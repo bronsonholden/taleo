@@ -1,10 +1,12 @@
 require 'json'
 require 'sinatra/base'
 require 'sinatra/namespace'
+require 'sinatra/streaming'
 
 # Mock Taleo API server
 class MockTaleo < Sinatra::Base
   register Sinatra::Namespace
+  register Sinatra::Streaming
 
   attr_reader :url
 
@@ -79,7 +81,8 @@ class MockTaleo < Sinatra::Base
         'activityDesc' => 'Activity',
         'activityEmployee' => 1,
         'relationshipUrls' => {
-          'activityEmployee' => "#{url}/object/activity/#{params[:id]}/activityEmployee"
+          'activityEmployee' => "#{url}/object/activity/#{params[:id]}/activityEmployee",
+          'formDownloadUrl' => "#{url}/object/activity/#{params[:id]}/form/download"
         }
       }
     }
@@ -134,6 +137,12 @@ class MockTaleo < Sinatra::Base
 
         get '/activityEmployee' do
           json_response 200, mock_employee
+        end
+
+        get '/form/download' do
+          stream do |out|
+            out << 'Mock file contents'
+          end
         end
       end
     end
