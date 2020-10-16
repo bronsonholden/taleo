@@ -36,6 +36,7 @@ jobs:
         bundle exec rake
 
   rubocop:
+    name: Rubocop
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
