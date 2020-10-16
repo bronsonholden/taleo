@@ -1,4 +1,5 @@
 require 'taleo/cursor'
+require 'taleo/activity'
 require 'taleo/packet'
 require 'taleo/candidate'
 require 'taleo/employee'
@@ -25,6 +26,10 @@ module Taleo
 
     def candidate(id)
       Candidate.new(show('candidate', id), self)
+    end
+
+    def activity(id)
+      Activity.new(show('activity', id), self)
     end
 
     def employees

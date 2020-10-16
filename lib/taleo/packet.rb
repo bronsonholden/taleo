@@ -1,4 +1,5 @@
 require 'taleo/resource'
+require 'taleo/activity'
 
 module Taleo
   # Stub for Employee resource class
@@ -15,5 +16,6 @@ module Taleo
     end
 
     has_one :employee, Employee, through: 'employeeId'
+    has_many :activities, Activity, singular: 'activity'
   end
 end
