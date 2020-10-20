@@ -78,7 +78,6 @@ module Taleo
 
       data = JSON.parse(res.body)
       @auth_token = data.dig('response', 'authToken')
-      puts @auth_token
     end
 
     def logout
