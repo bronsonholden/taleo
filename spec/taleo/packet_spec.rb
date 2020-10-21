@@ -8,6 +8,10 @@ RSpec.describe Taleo::Packet do
     it 'has an ID' do
       expect(packet.id).to be_a(Integer)
     end
+
+    it 'has an employee ID' do
+      expect(packet.employee_id).to be_a(Integer)
+    end
   end
 
   describe 'relationships' do
