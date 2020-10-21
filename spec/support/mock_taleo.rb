@@ -113,15 +113,42 @@ class MockTaleo < Sinatra::Base
     json_response 200, {}
   end
 
+  def search(total, item)
+    base_url = "#{url}/object/employee/search"
+    start = params[:start].to_i || 1
+    limit = params[:limit].to_i || 10
+
+    p = {
+      'total' => total,
+      'self' => "#{url}/object/employee/search?start=#{start}&limit=#{limit}"
+    }
+
+    # Number of items in the results array
+    size = [0, [total - start + 1, limit].min].max
+
+    if start - limit > 0
+      # Taleo does set start to start - limit, even if that is still out of
+      # range to retrieve any results.
+      p['previous'] = "#{base_url}?start=#{[start - limit, 1].max}&limit=#{limit}"
+    end
+
+    if start + limit <= total
+      p['next'] = "#{base_url}?start=#{[start + limit, total].min}&limit=#{limit}"
+    end
+
+    return {
+      pagination: p,
+      results: Array.new(size) { item }
+    }
+  end
+
   namespace '/object' do
     namespace '/employee' do
       get '/search' do
+        res = search(100, mock_employee)
         json_response 200, {
-          'pagination' => {
-            'total' => 5,
-            'self' => "#{url}/object/employee/search"
-          },
-          'searchResults' => Array.new(5) { mock_employee }
+          'pagination' => res[:pagination],
+          'searchResults' => res[:results]
         }
       end
 
