@@ -11,5 +11,17 @@ RSpec.describe Taleo do
         expect(client.api_url!).to be_a(String)
       end
     end
+
+    describe 'login' do
+      it 'does not raise error' do
+        expect { client.login }.not_to raise_error
+      end
+    end
+
+    describe 'logout' do
+      it 'does not raise error' do
+        expect { client.logout }.not_to raise_error
+      end
+    end
   end
 end
