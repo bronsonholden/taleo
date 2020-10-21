@@ -53,7 +53,7 @@ module Taleo
       data = JSON.parse(res.body)
       pagination = data.dig('response', 'pagination')
       results = data.dig('response', 'searchResults')
-      Cursor.new(pagination, results, client)
+      Cursor.new(pagination, results, resource, klass, client)
     end
   end
 end
