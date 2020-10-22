@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    taleo (0.1.1)
+    taleo (0.2.0)
       faraday (~> 1.0)
 
 GEM
