@@ -1,6 +1,6 @@
 # Taleo
 
-[![Gem Version](https://badge.fury.io/rb/taleo.svg)](https://badge.fury.io/rb/taleo) [![Maintainability](https://api.codeclimate.com/v1/badges/18630172a2dc24e7ace1/maintainability)](https://codeclimate.com/github/paulholden2/taleo/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/18630172a2dc24e7ace1/test_coverage)](https://codeclimate.com/github/paulholden2/taleo/test_coverage)
+[![Gem Version](https://badge.fury.io/rb/taleo.svg)](https://badge.fury.io/rb/taleo) [![Inline docs](http://inch-ci.org/github/paulholden2/taleo.svg?branch=master)](http://inch-ci.org/github/paulholden2/taleo) [![Maintainability](https://api.codeclimate.com/v1/badges/18630172a2dc24e7ace1/maintainability)](https://codeclimate.com/github/paulholden2/taleo/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/18630172a2dc24e7ace1/test_coverage)](https://codeclimate.com/github/paulholden2/taleo/test_coverage)
 
 A library for using the Taleo REST API.
 
