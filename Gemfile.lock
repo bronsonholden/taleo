@@ -72,7 +72,7 @@ DEPENDENCIES
   rspec (~> 3.0)
   simplecov (~> 0.17.1)
   sinatra (~> 2.0)
-  sinatra-contrib
+  sinatra-contrib (~> 2.0)
   taleo!
   webmock (~> 3.6)
   yard

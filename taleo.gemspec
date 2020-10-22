@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'faraday', '~> 1.0'
 
   spec.add_development_dependency 'sinatra', '~> 2.0'
-  spec.add_development_dependency 'sinatra-contrib'
+  spec.add_development_dependency 'sinatra-contrib', '~> 2.0'
   spec.add_development_dependency 'webmock', '~> 3.6'
   spec.add_development_dependency 'yard'
 end
