@@ -34,8 +34,8 @@ module Taleo
       Activity.new(show('activity', id), self)
     end
 
-    def employees
-      cursor('employee', Employee)
+    def employees(start = 1, limit = 10)
+      cursor('employee', Employee, start, limit)
     end
 
     def cursor(resource, klass, start = 1, limit = 10)

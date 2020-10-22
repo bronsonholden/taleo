@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe Taleo::Cursor do
-  let(:start_cursor) { client.cursor('employee', Taleo::Employee, 1) }
-  let(:end_cursor) { client.cursor('employee', Taleo::Employee, 999999) }
+  let(:start_cursor) { client.employees(1) }
+  let(:end_cursor) { client.employees(999999) }
 
   describe 'pagination checks' do
     it 'has next results' do
