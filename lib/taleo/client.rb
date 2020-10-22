@@ -9,7 +9,7 @@ require 'taleo/employee'
 module Taleo
   # Base object for executing queries and wrapping HTTP requests.
   class Client
-    attr_reader :org_code, :username, :password, :service_url
+    attr_reader :org_code, :username, :password, :service_url, :auth_token
 
     def initialize(org_code, username, password, service_url)
       @org_code = org_code
@@ -119,12 +119,6 @@ module Taleo
       data = JSON.parse(res.body)
       @api_url = data.dig('response', 'URL')
       @api_url
-    end
-
-    private
-
-    def auth_token
-      @auth_token
     end
   end
 end
