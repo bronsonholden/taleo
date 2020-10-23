@@ -3,6 +3,7 @@
 require 'taleo/resource'
 require 'taleo/candidate'
 require 'taleo/packet'
+require 'taleo/location'
 
 module Taleo
   # Stub for Packet resource class
@@ -21,7 +22,12 @@ module Taleo
       data.fetch('lastName')
     end
 
+    def location_id
+      data.fetch('location')
+    end
+
     has_one :candidate, Candidate
+    has_one :location, Location
     has_many :packets, Packet, singular: 'packet', plural: 'activityPackets'
   end
 end

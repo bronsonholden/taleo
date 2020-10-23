@@ -22,6 +22,10 @@ RSpec.describe Taleo::Employee do
     it 'has a last name' do
       expect(employee.last_name).to be_a(String)
     end
+
+    it 'has a location ID' do
+      expect(employee.location_id).to be_a(Integer)
+    end
   end
 
   describe 'relationships' do
@@ -31,6 +35,10 @@ RSpec.describe Taleo::Employee do
 
     it 'has packets' do
       expect(employee.packets).to all(be_a(Taleo::Packet))
+    end
+
+    it 'has a location' do
+      expect(employee.location).to be_a(Taleo::Location)
     end
   end
 end

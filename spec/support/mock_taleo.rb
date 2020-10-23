@@ -42,9 +42,11 @@ class MockTaleo < Sinatra::Base
         'ssn' => 123456789,
         'firstName' => 'John',
         'lastName' => 'Doe',
+        'location' => 1,
         'relationshipUrls' => {
           'candidate' => "#{url}/object/employee/#{params[:id]}/candidate",
-          'packets' => "#{url}/object/employee/#{params[:id]}/packet"
+          'packets' => "#{url}/object/employee/#{params[:id]}/packet",
+          'location' => "#{url}/object/employee/#{params[:id]}/location"
         }
       }
     }
@@ -101,6 +103,15 @@ class MockTaleo < Sinatra::Base
         'contentType' => 'text/plain',
         'attachmentType' => 'User_Attachment_Type',
         'downloadUrl' => "#{url}/object/#{entity}/#{params[:id]}/attachment/#{id}/download"
+      }
+    }
+  end
+
+  def mock_location
+    {
+      'location' => {
+        'id' => 1,
+        'locationName' => 'Mock Location'
       }
     }
   end
@@ -167,6 +178,10 @@ class MockTaleo < Sinatra::Base
           json_response 200, {
             'activityPackets' => Array.new(5) { mock_packet }
           }
+        end
+
+        get '/location' do
+          json_response 200, mock_location
         end
       end
     end
