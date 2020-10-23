@@ -40,6 +40,8 @@ class MockTaleo < Sinatra::Base
         'candidate' => 1,
         'employeeId' => params[:id].to_i,
         'ssn' => 123456789,
+        'firstName' => 'John',
+        'lastName' => 'Doe',
         'relationshipUrls' => {
           'candidate' => "#{url}/object/employee/#{params[:id]}/candidate",
           'packets' => "#{url}/object/employee/#{params[:id]}/packet"

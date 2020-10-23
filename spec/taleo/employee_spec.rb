@@ -14,6 +14,14 @@ RSpec.describe Taleo::Employee do
     it 'has an ID' do
       expect(employee.id).to be_a(Integer)
     end
+
+    it 'has a first name' do
+      expect(employee.first_name).to be_a(String)
+    end
+
+    it 'has a last name' do
+      expect(employee.last_name).to be_a(String)
+    end
   end
 
   describe 'relationships' do
