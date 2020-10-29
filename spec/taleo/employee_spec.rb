@@ -44,5 +44,9 @@ RSpec.describe Taleo::Employee do
     it 'has a location' do
       expect(employee.location).to be_a(Taleo::Location)
     end
+
+    it 'has attachments' do
+      expect(employee.attachments).to all(be_a(Taleo::Attachment))
+    end
   end
 end

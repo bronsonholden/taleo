@@ -33,5 +33,21 @@ module Taleo
     has_one :candidate, Candidate
     has_one :location, Location
     has_many :packets, Packet, singular: 'packet', plural: 'activityPackets'
+    has_many :attachments, Attachment, singular: 'attachment', through: 'attachment'
+
+    # Override since employee relationship URLs will not include an
+    # attachments URL
+    def has_attachments?
+      true
+    end
+
+    # Annoying hack since the employee resource relationship URLs hash
+    # doesn't include an attachments link, even if there are attachments.
+    def relationship_urls
+      urls = super
+      urls.merge({
+        'attachment' => urls.fetch('historylog').gsub(/historylog$/, 'attachment')
+      })
+    end
   end
 end

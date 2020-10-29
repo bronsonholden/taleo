@@ -46,7 +46,9 @@ class MockTaleo < Sinatra::Base
         'relationshipUrls' => {
           'candidate' => "#{url}/object/employee/#{params[:id]}/candidate",
           'packets' => "#{url}/object/employee/#{params[:id]}/packet",
-          'location' => "#{url}/object/employee/#{params[:id]}/location"
+          'location' => "#{url}/object/employee/#{params[:id]}/location",
+          # For generating attachments URL. See lib/taleo/employee.rb
+          'historylog' => "#{url}/object/employee/#{params[:id]}/historylog"
         }
       }
     }
@@ -182,6 +184,12 @@ class MockTaleo < Sinatra::Base
 
         get '/location' do
           json_response 200, mock_location
+        end
+
+        get '/attachment' do
+          json_response 200, {
+            'attachments' => Array.new(5) { |i| mock_attachment('employee', i) }
+          }
         end
       end
     end
