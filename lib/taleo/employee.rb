@@ -26,6 +26,10 @@ module Taleo
       data.fetch('location')
     end
 
+    def ssn
+      data.fetch('ssn')
+    end
+
     has_one :candidate, Candidate
     has_one :location, Location
     has_many :packets, Packet, singular: 'packet', plural: 'activityPackets'

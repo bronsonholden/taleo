@@ -39,7 +39,7 @@ class MockTaleo < Sinatra::Base
       'employee' => {
         'candidate' => 1,
         'employeeId' => params[:id].to_i,
-        'ssn' => 123456789,
+        'ssn' => '123456789',
         'firstName' => 'John',
         'lastName' => 'Doe',
         'location' => 1,

@@ -26,6 +26,10 @@ RSpec.describe Taleo::Employee do
     it 'has a location ID' do
       expect(employee.location_id).to be_a(Integer)
     end
+
+    it 'has an SSN' do
+      expect(employee.ssn).to be_a(String)
+    end
   end
 
   describe 'relationships' do
