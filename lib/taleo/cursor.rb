@@ -27,6 +27,18 @@ module Taleo
       pagination.key?('previous')
     end
 
+    def has_self?
+      pagination.key?('self')
+    end
+
+    def self_page
+      res = client.connection.get do |req|
+        req.url pagination.fetch('self')
+      end
+
+      new_cursor(res)
+    end
+
     def next_page
       raise Taleo::Error.new('No further results') unless has_next?
 
