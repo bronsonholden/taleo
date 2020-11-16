@@ -34,14 +34,16 @@ module Taleo
       Activity.new(show('activity', id), self)
     end
 
-    def employees(start = 1, limit = 10)
-      cursor('employee', Employee, start, limit)
+    def employees(start = 1, limit = 10, params: {})
+      raise ArgumentError, "At least one query parameter is required " \
+                           "for employee search" if params.keys.size.zero?
+      cursor('employee', Employee, start, limit, params: params)
     end
 
-    def cursor(resource, klass, start = 1, limit = 10)
+    def cursor(resource, klass, start = 1, limit = 10, params: {})
       res = connection.get do |req|
         req.url "object/#{resource}/search"
-        req.params.merge!({
+        req.params.merge!(params).merge!({
           'start' => start,
           'limit' => limit
         })

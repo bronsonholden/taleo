@@ -5,8 +5,17 @@ RSpec.describe Taleo::Employee do
   let(:employee) { client.employee(employee_id) }
 
   describe 'search' do
+    context 'no query params' do
+      it 'raises error' do
+        expect { client.employees }.to raise_error(ArgumentError)
+      end
+    end
+
     it 'returns results' do
-      expect(client.employees.items).to all(be_a(Taleo::Employee))
+      cursor = client.employees(params: {
+        'lastUpdated_from': '2000-01-01T00:00PST'
+      })
+      expect(cursor.items).to all(be_a(Taleo::Employee))
     end
   end
 
