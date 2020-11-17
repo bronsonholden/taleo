@@ -4,6 +4,14 @@
 
 A library for using the Taleo REST API.
 
+**Note**: A Nov 2020 change to the Taleo API requires at least one search
+criteria be passed to employee searches (performed by `client#employees` to
+retrieve paged results). Versions prior to 0.6 do not support passing search
+parameters, and as such you should not use them if you need to utilize
+employee searches. See the Taleo REST API guide
+[here](https://www.oracle.com/technical-resources/documentation/taleobusiness.html)
+for more information.
+
 ## Installation
 
 Add this line to your application's Gemfile:
