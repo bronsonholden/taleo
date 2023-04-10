@@ -86,7 +86,7 @@ GEM
     yard (0.9.32)
 
 PLATFORMS
-  arm64-darwin-22
+  ruby
 
 DEPENDENCIES
   rake (>= 12.3.3)
